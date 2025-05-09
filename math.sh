@@ -20,6 +20,9 @@ while [[ "$#" -gt 0 ]]; do
         echo "USER: $USER"
         echo "SCRIPT: $0"
         echo "OPERATION: $OPERATION"
+        echo -n "NUMBERS: $RESULT "
+        for N in ${NUMBERS[@]}; do echo -n "$N "; done
+        echo ""
         shift 1
         ;;
     *)
