@@ -1,5 +1,6 @@
 #!/bin/bash
 
+NUMBERS=()
 while [[ "$#" -gt 0 ]]; do
     case "$1" in
     -o)
@@ -7,15 +8,18 @@ while [[ "$#" -gt 0 ]]; do
         shift 2
         ;;
     -n)
-        N1="$2"
-        N2="$3"
-        shift 3
+        shift
+        RESULT=$1   # stores first operand
+        shift
+        while [[ "$1" != -* && "$#" -gt 0 ]]; do    # stores the rest of the operands
+            NUMBERS+=("$1")
+            shift
+        done
         ;;
     -d)
         echo "USER: $USER"
         echo "SCRIPT: $0"
         echo "OPERATION: $OPERATION"
-        echo "N1: $N1 N2: $N2"
         shift 1
         ;;
     *)
@@ -26,4 +30,7 @@ while [[ "$#" -gt 0 ]]; do
     esac
 done
 
-echo $(( $N1 $OPERATION $N2 ))
+for N in ${NUMBERS[@]}; do
+    RESULT=$(( $RESULT $OPERATION $N ))
+done
+echo $RESULT
