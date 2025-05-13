@@ -2,10 +2,10 @@
 
 for i in {1..100}; do
     RESULT=""
-    if [[ $(($i % 3)) == 0 ]]; then
+    if [[ $((i % 3)) == 0 ]]; then
         RESULT+="Fizz"
     fi
-    if [[ $(($i % 5)) == 0 ]]; then
+    if [[ $((i % 5)) == 0 ]]; then
         RESULT+="Buzz"
     fi
     if [[ ${#RESULT} -eq 0 ]]; then
