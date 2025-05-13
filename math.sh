@@ -21,7 +21,7 @@ while [[ "$#" -gt 0 ]]; do
         echo "SCRIPT: $0"
         echo "OPERATION: $OPERATION"
         echo -n "NUMBERS: $RESULT "
-        for N in ${NUMBERS[@]}; do echo -n "$N "; done
+        for N in "${NUMBERS[@]}"; do echo -n "$N "; done
         echo ""
         shift 1
         ;;
@@ -33,7 +33,7 @@ while [[ "$#" -gt 0 ]]; do
     esac
 done
 
-for N in ${NUMBERS[@]}; do
-    RESULT=$(( $RESULT $OPERATION $N ))
+for N in "${NUMBERS[@]}"; do
+    RESULT=$( $RESULT "$OPERATION" "$N" )
 done
-echo $RESULT
+echo "$RESULT"
